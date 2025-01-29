@@ -1,0 +1,10 @@
+#we start by adding isAdmin to schema User;
+#add th routes "/api/user/all and deleteOne"
+#add controllers to handle the getAll  and deleteOne
+#middleware isAdmin
+#end the back by testing : POSTMAN
+#
+#Front: Redux: adding the actionTypes, Actions and userReducer, and updating the index
+# create the page Admin: dashboard 
+#updating the routes and the navBar
+#construction of the page Admin for displaying the users and the buttons "Delete"
