@@ -8,7 +8,7 @@ const BareNav = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.authReducer.user);
   const isAuth = useSelector((state) => state.authReducer.isAuth);
-  console.log(user);
+  // console.log(user);
   const handleLogout = () => {
     dispatch(logout());
     navigate('/')

@@ -12,7 +12,7 @@ const Admin = () => {
     dispatch(getUsers());
   }, [dispatch]);
 
-  console.log(listUsers);
+  // console.log(listUsers);
 
   return (
     <div className="page">

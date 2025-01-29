@@ -3,6 +3,9 @@ const {
   addProduct,
   getProdcucts,
   getOneProd,
+  getMyProd,
+  editProd,
+  deleteProd,
 } = require("../controllers/product.controllers");
 const router = express.Router();
 const isAuth = require("../middleware/isAuth");
@@ -13,6 +16,9 @@ const isAuth = require("../middleware/isAuth");
 
 router.post("/addProd", isAuth, addProduct);
 router.get("/allProd", getProdcucts);
+router.get("/myProd", isAuth, getMyProd);
 router.get("/:id", getOneProd);
+router.put("/:id", isAuth, editProd);
+router.delete("/:id", isAuth, deleteProd);
 
 module.exports = router;

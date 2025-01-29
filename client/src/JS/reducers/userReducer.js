@@ -29,7 +29,7 @@ const userReducer = (state = intialState, { type, payload }) => {
       };
     case DELETE_USER:
       const newUsers = state.users.filter((el) => el._id !== payload);
-      console.log(newUsers)
+      // console.log(newUsers)
       return { ...state, load: false, users: newUsers };
     case FAIL_USER:
       return { ...state, load: false, errors: payload };

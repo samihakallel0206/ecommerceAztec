@@ -20,15 +20,45 @@ exports.getProdcucts = async (req, res) => {
 };
 
 exports.getOneProd = async (req, res) => {
-    try {
-        const { id } = req.params
-        console.log(id)
-        const prodToGet = await Product.findById(id)
-        if (!prodToGet) {
-            return res.status(404).json({msg:"Product not found"});
-        }
-         res.status(200).json({ msg: "The product is" , prodToGet});
-    } catch (error) {
-         res.status(400).json(error);
+  try {
+    const { id } = req.params;
+    // console.log(id)
+    const prodToGet = await Product.findById(id);
+    if (!prodToGet) {
+      return res.status(404).json({ msg: "Product not found" });
+    }
+    res.status(200).json({ msg: "The product is", prodToGet });
+  } catch (error) {
+    res.status(400).json(error);
+  }
+};
+
+exports.getMyProd = async (req, res) => {
+  try {
+    const myProdList = await Product.find({ addedBy: req.user._id });
+    res.status(200).json({ msg: "List of My product", myProdList });
+  } catch (error) {
+    res.status(400).json(error);
+  }
+};
+exports.editProd = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const productChange = req.body;
+    const productEdited = await Product.findByIdAndUpdate(id, productChange, {
+      new: true,
+    });
+    res.status(200).json({ msg: "Updated successfully", productEdited });
+  } catch (error) {
+    res.status(400).json(error);
+  }
+};
+exports.deleteProd = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const productToDel = await Product.findByIdAndDelete(id);
+    res.status(200).json({ msg: "Deleted successfully", productToDel });
+  } catch (error) {
+    res.status(400).json(error);
   }
 };
