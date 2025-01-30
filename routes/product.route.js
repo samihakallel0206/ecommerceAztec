@@ -1,7 +1,7 @@
 const express = require("express");
 const {
   addProduct,
-  getProdcucts,
+  getProducts,
   getOneProd,
   getMyProd,
   editProd,
@@ -15,7 +15,7 @@ const isAuth = require("../middleware/isAuth");
 // })
 
 router.post("/addProd", isAuth, addProduct);
-router.get("/allProd", getProdcucts);
+router.get("/allProd", getProducts);
 router.get("/myProd", isAuth, getMyProd);
 router.get("/:id", getOneProd);
 router.put("/:id", isAuth, editProd);

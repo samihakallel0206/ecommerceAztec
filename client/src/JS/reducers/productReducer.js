@@ -18,8 +18,9 @@ const initialState = {
   myProduct: [],
   product: {},
   success: false,
-  errors: false,
-};
+  errors: null, //
+}
+  
 
 //pure function
 
@@ -59,7 +60,7 @@ const productReducer = (state = initialState, { type, payload }) => {
         ...state,
         loadP: false,
         products: state.products.map((elt) =>
-          elt._id === payload.id ? { ...elt, elt: payload.productEdited } : elt
+          elt._id === payload.id ? { ...elt, ... payload.productEdited } : elt
         ),
         success: true,
       };
@@ -71,7 +72,7 @@ const productReducer = (state = initialState, { type, payload }) => {
         success: true,
       };
     case FAIL_PRODUCT:
-      return { ...state, loadP: false, errors: true };
+      return { ...state, loadP: false, errors: payload , success:false};
 
     default:
       return state;

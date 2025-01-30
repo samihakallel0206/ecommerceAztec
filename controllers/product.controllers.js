@@ -10,7 +10,7 @@ exports.addProduct = async (req, res) => {
   }
 };
 
-exports.getProdcucts = async (req, res) => {
+exports.getProducts = async (req, res) => {
   try {
     const listProd = await Product.find();
     res.status(200).json({ msg: "List of products", listProd });
