@@ -14,7 +14,7 @@ export const getAllProd = () => async (dispatch) => {
   dispatch({ type: LOAD_PRODUCT });
   try {
     const result = await axios.get("/api/product/allProd");
-    dispatch({ type: GET_PRODUCTS, payload: result.data.listProd });
+    dispatch({ type: GET_PRODUCTS, payload: result.data.listProd});
   } catch (error) {
     dispatch({ type: FAIL_PRODUCT, payload: error.response.data });
   }
@@ -23,11 +23,11 @@ export const getAllProd = () => async (dispatch) => {
 export const addProduct = (newProd) => async (dispatch) => {
   dispatch({ type: LOAD_PRODUCT });
   try {
-    const config = {
-      headers: {//
-        authorisation: localStorage.getItem("token"),
-      },
-    };
+     let config = {
+       headers: {
+         authorization: localStorage.getItem("token"),
+       },
+     };
     const result = await axios.post("/api/product/addProd", newProd, config);
     dispatch({ type: ADD_PRODUCT, payload: result.data });
     dispatch(getAllProd());
@@ -49,9 +49,9 @@ export const getOne = (id) => async (dispatch) => {
 export const getMyProd = () => async (dispatch) => {
   dispatch({ type: LOAD_PRODUCT });
   try {
-    const config = {
+    let config = {
       headers: {
-        authorisation: localStorage.getItem("token"),
+        authorization: localStorage.getItem("token"),
       },
     };
     const result = await axios.get("/api/product/myProd", config);
@@ -65,11 +65,11 @@ export const getMyProd = () => async (dispatch) => {
 export const editProduct = (id, editProd) => async (dispatch) => {
   dispatch({ type: LOAD_PRODUCT });
   try {
-    const config = {
-      headers: {
-        authorisation: localStorage.getItem("token"),
-      },
-    };
+     let config = {
+       headers: {
+         authorization: localStorage.getItem("token"),
+       },
+     };
     const result = await axios.put(`/api/product/${id}`, editProd, config);
     dispatch({ type: EDIT_PRODUCT, payload: result.data });
     dispatch(getOne(id));
@@ -81,9 +81,9 @@ export const editProduct = (id, editProd) => async (dispatch) => {
 export const delProduct = (id) => async (dispatch) => {
   dispatch({ type: LOAD_PRODUCT });
   try {
-    const config = {
+    let config = {
       headers: {
-        authorisation: localStorage.getItem("token"),
+        authorization: localStorage.getItem("token"),
       },
     };
     const result = await axios.delete(`/api/product/${id}`, config);

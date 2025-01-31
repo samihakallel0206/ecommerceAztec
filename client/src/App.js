@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { current } from "./JS/actions/authAction";
 import DashBoard from "./pages/DashBoard";
+import DescriptionProd from "./pages/DescriptionProd";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ function App() {
       <BareNav />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/prod/:id" element={<DescriptionProd />} />
 
         {user.isAdmin && <Route path="/admin" element={<DashBoard />} />}
 
@@ -40,7 +42,7 @@ function App() {
         )}
       </Routes>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

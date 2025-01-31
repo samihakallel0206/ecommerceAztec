@@ -32,14 +32,14 @@ const productReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         loadP: false,
-        products: [...state.products, payload],
+        products: [...state.products, payload.newProd],
         success: true,
       };
     case GET_PRODUCTS:
       return {
         ...state,
         loadP: false,
-        products: payload.listProd,
+        products: payload,
         success: true,
       };
     case GET_ONE_PRODUCT:
@@ -60,7 +60,7 @@ const productReducer = (state = initialState, { type, payload }) => {
         ...state,
         loadP: false,
         products: state.products.map((elt) =>
-          elt._id === payload.id ? { ...elt, ... payload.productEdited } : elt
+          elt._id === payload.id ? { ...elt, ...payload.productEdited } : elt
         ),
         success: true,
       };

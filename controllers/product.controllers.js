@@ -24,6 +24,7 @@ exports.getOneProd = async (req, res) => {
     const { id } = req.params;
     // console.log(id)
     const prodToGet = await Product.findById(id);
+    //verification à faire à chaque controleur pour gérer les erreurs (hanldling Errors)
     if (!prodToGet) {
       return res.status(404).json({ msg: "Product not found" });
     }
