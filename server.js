@@ -18,7 +18,7 @@ app.use("/api/user", require("./routes/user.route"));
 app.use("/api/product", require("./routes/product.route"));
 
 //Port + listen
-PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 7000;
 app.listen(PORT, (err) => {
   err
     ? console.log(err)
